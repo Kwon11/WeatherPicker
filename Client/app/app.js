@@ -10,11 +10,15 @@ app.controller("weatherCtrl", ['$scope',
 '$http', function($scope, $http) {
   $scope.submitLocation = function() {
     console.log($scope.location);
+
     $http({
       method: 'POST',
       url: '/weather',
-      data:{
-        'location': $scope.location
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      data: {
+        location: $scope.location
       }
     }).then(function success(res) {
       console.log(res)
