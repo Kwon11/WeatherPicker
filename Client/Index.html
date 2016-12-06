@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html ng-app="weatherClothes">
+<head>
+<script src="../node_modules/angular/angular.js"></script>
+<script src="app/app.js"></script>
+<meta charset = "utf-8" />
+<title> Better For The Weather </title>
+<link rel="stylesheet" type="text/css" href="styles/style.css">
+</head>
+
+
+<body ng-controller='weatherCtrl'>
+
+<h1>Better For The Weather</h1>
+<nav></nav>
+
+<form>Location: <br><input type="text" ng-model="location"> </form>
+<form>Store:<br><input type="text" ng-model="store"> </form>
+<button type="button" ng-click="submitLocation()">Get Clothes For My City</button>
+<div ng-view> </div>
+
+</body>
+</html>
