@@ -20,12 +20,30 @@ app.controller("weatherCtrl", ['$scope',
       data: {
         location: $scope.location
       }
-    }).then(function success(res) {
+    }).then(function success(res) {//RESPONSE FROM POSTING CITY TO LINE 28 AS DEGREE
       var weatherArray = JSON.parse(res.data.body);
-      //weatherArray.list[0].deg
-    }, function error(res) {
+      return weatherArray.list[0].deg;
+    }, function error(res) { //ERROR FROM POSTING CITY
       console.log('FUCK NO POST TO SERVER')
-    });
+    }).then(function (degree) { //POSTING TEMPERATURE
+      $http({
+        method: 'POST',
+        url: '/clothes',
+        headers:{
+          'Content-Type': 'application/json'
+        },
+        data: {
+          temperature: degree
+        }
+      }).then(function success(clothes) {//RESPONSE FROM POSTING TEMP
+        console.log('post to clothes went well', clothes);
+        //clothes here is the response from posting temperature
+      }, function error(res) { //ERROR RESPONSE FROM CLOTHES
+        console.log('post to /clothes went wrong');
+      })
+    }, function error(res) { //ERROR FROM POSTING TEMPERATURE
+      console.log('didn\'t post temperature back to server')
+    })
     //send a request to server that will
      //send a request to api for weather in this location
     //current date

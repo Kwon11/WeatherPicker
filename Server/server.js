@@ -22,9 +22,11 @@ app.post('/weather', function (req, res) {
     res.status(201).send(response);
   });
 })
-//only breaks when I attempt to access req.data
-//req.headers, req.method, req.url are all fine
 
+app.post('/clothes', function (req, res) {
+  console.log('got the post to clothes', req.body.temperature)
+  res.status(201).send('yo yo yo');
+})
 
 app.listen(3000, function () {
   console.log('server is started yo')
