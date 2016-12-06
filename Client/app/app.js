@@ -21,7 +21,8 @@ app.controller("weatherCtrl", ['$scope',
         location: $scope.location
       }
     }).then(function success(res) {
-      console.log(res)
+      var weatherArray = JSON.parse(res.data.body);
+      //weatherArray.list[0].deg
     }, function error(res) {
       console.log('FUCK NO POST TO SERVER')
     });
