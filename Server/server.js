@@ -24,8 +24,16 @@ app.post('/weather', function (req, res) {
 })
 
 app.post('/clothes', function (req, res) {
-  console.log('got the post to clothes', req.body.temperature)
-  res.status(201).send('yo yo yo');
+  var temperature = req.body.temperature;
+  var time = new Date;
+
+  time = '' + time.getFullYear() + '-' + (time.getMonth() + 1) + '-' + time.getDate() + 'T' + time.getHours() + '%3A' + time.getMinutes() + '%3A' + time.getSeconds() + 'Z';
+
+  request.get({//send api request to store
+    url:
+  }, function success(error, response) {
+    res.status(201).send(FILL ME IN BITCH)
+  });
 })
 
 app.listen(3000, function () {
