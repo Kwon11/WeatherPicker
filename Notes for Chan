@@ -1,0 +1,6 @@
+1. Figure out amazon API
+  a. have time created
+  b. http://docs.aws.amazon.com/AWSECommerceService/latest/DG/rest-signature.html
+2. Figure out response
+3. Use angular ng-repeat to render each item. want photo, name, offering.
+

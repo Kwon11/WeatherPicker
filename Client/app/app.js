@@ -37,6 +37,8 @@ app.controller("weatherCtrl", ['$scope',
         }
       }).then(function success(clothes) {//RESPONSE FROM POSTING TEMP
         console.log('post to clothes went well', clothes);
+        clothes = JSON.parse(clothes.body);
+        console.log('clothes are', clothes);
         //clothes here is the response from posting temperature
       }, function error(res) {
         console.log('ERROR RESPONSE FROM CLOTHES');
