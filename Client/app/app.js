@@ -1,5 +1,5 @@
 var app = angular.module('weatherClothes', [
-  //add dependancies as we go
+  'ngSanitize'
   ]);
 
 app.service('weatherService', function() {
@@ -7,7 +7,7 @@ app.service('weatherService', function() {
 });
 
 app.controller("weatherCtrl", ['$scope',
-'$http', function($scope, $http) {
+'$http', function($scope, $http, $sce) {
   $scope.submitLocation = function() {
     console.log($scope.location);
 
@@ -37,9 +37,8 @@ app.controller("weatherCtrl", ['$scope',
         }
       }).then(function success(clothes) {//RESPONSE FROM POSTING TEMP
         console.log('post to clothes went well', clothes);
-        clothes = JSON.parse(clothes.body);
-        console.log('clothes are', clothes);
         //clothes here is the response from posting temperature
+        $scope.clothesPage = clothes.data;
       }, function error(res) {
         console.log('ERROR RESPONSE FROM CLOTHES');
       })
